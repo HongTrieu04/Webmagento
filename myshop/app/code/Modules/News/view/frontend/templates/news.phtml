@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+    /* Hiệu ứng hover cho ô tin tức */
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Hình ảnh trong ô tin tức */
+    .card-img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 150px;
+        overflow: hidden;
+        background: #f8f9fa;
+    }
+
+    .card-img-container img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
+    /* Văn bản */
+    .card-body h4 a {
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .card-body h4 a:hover {
+        color: #007bff;
+    }
+</style>
+
+<?php
+// URL RSS mới
+$rssUrl = "https://vnexpress.net/rss/oto-xe-may.rss";
+
+// Lấy dữ liệu từ RSS
+$xml = simplexml_load_file($rssUrl);
+
+// Kiểm tra nếu không tải được dữ liệu
+if (!$xml || empty($xml->channel->item)) {
+    echo '<div class="container"><p style="color: #f3b2b2;">Không thể tải dữ liệu từ RSS feed.</p></div>';
+    return;
+}
+?>
+
+<div class="container mt-4">
+    <div class="row">
+        <?php foreach ($xml->channel->item as $k => $item): ?>
+            <?php
+            // Lấy link ảnh từ thẻ <enclosure> hoặc trích xuất từ <description>
+            $image = null;
+            if (isset($item->enclosure['url'])) {
+                $image = (string)$item->enclosure['url'];
+            } elseif (preg_match('/<img src="([^"]+)"/', $item->description, $matches)) {
+                $image = $matches[1];
+            }
+            ?>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-img-container">
+                        <?php if ($image): ?>
+                            <img src="<?= htmlspecialchars($image) ?>" alt="Thumbnail">
+                        <?php endif; ?>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="mb-2">
+                            <a class="text-dark font-weight-bold" href="<?= htmlspecialchars($item->link) ?>" target="_blank">
+                                <?= htmlspecialchars($item->title) ?>
+                            </a>
+                        </h4>
+                        <p class="card-text"><?= htmlspecialchars(strip_tags($item->description)) ?></p>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

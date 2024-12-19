@@ -1,0 +1,64 @@
+.footer .block.newsletter {
+  form {
+    @include make-flex;
+    @include justify-content(center);
+    @include flex-wrap(wrap);
+    padding-right: 10px;
+  }
+  .label {
+    @include flex-basis(100%);
+    display: block;
+    line-height: 21px;
+    margin-bottom: 22px;
+  }
+  .field {
+    padding: 0;
+    @include flex-basis(224px);
+    input {
+      margin-bottom: 0;
+      transition: margin-bottom $default-transition;
+      border: 0;
+      background-color: #f5f5f5;
+      padding: 13px 18px;
+      @media (max-width: $screen-md-min) {
+        padding: 13px 18px;
+      }
+      &.mage-error {
+
+      }
+    }
+    @media (max-width: 400px) {
+      @include flex-basis(200px);
+    }
+  }
+  .actions {
+    padding-left: 4px;
+    button.action.primary {
+      @include button-block;
+      padding: 13px 20px;
+    }
+  }
+  .field,
+  .actions {
+    margin-bottom: 8px;
+  }
+  #newsletter-error {
+    position: absolute !important;
+    top: calc(100% + 5px);
+    left: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: left;
+  }
+}
+
+.sm-mobile .footer {
+  .block.newsletter {
+    text-align: center;
+
+    button.subscribe {
+      padding: 14px 33px;
+    }
+  }
+}

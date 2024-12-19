@@ -1,0 +1,134 @@
+<?php
+
+/**
+ * @var FoTech\CustomModule\Block\WeatherIndex $block
+ */
+$hanoi = $block->getWeatherInfoIn('HaNoi');
+$tokyo = $block->getWeatherInfoIn('Tokyo');
+$newyork = $block->getWeatherInfoIn('New York');
+$london = $block->getWeatherInfoIn('London');
+$paris = $block->getWeatherInfoIn('Paris');
+$seoul = $block->getWeatherInfoIn('Seoul');
+//var_dump();
+?>
+<main class="container">
+    <div class="card-wrapper">
+        <section class="card anim-flip">
+            <header>
+                <h1 class="card-header">Hà Nội</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $hanoi['temp'] ?></p>
+            <div class="icon">
+                <div class="cloud-group">
+                    <span class="icon-cloud cloud-circle shadow-cloud-clip"></span>
+                    <span class="icon-cloud cloud-base shadow-cloud-clip"></span>
+                </div>
+            </div>
+            <div class="card-info">
+                <p>Mây: <?php echo " ${hanoi['clouds']}%" ?></p>
+                <p>Độ ẩm: <?php echo " ${hanoi['humidity']}%" ?></p>
+                <p>Tốc độ gió: <?php echo " ${hanoi['wind']}m/s" ?></p>
+            </div>
+        </section>
+
+        <section class="card anim-flip anim-flip-card-2">
+            <header>
+                <h1 class="card-header">Tokyo</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $tokyo['temp'] ?></p>
+            <div class="icon">
+                <div class="cloud-group">
+                    <div class="sun-group">
+                        <span class="icon-cloud sun"></span>
+                        <span class="icon-cloud sunshine"></span>
+                    </div>
+                    <span class="icon-cloud cloud-circle shadow-cloud-clip"></span>
+                    <span class="icon-cloud cloud-base shadow-cloud-clip"></span>
+                </div>
+            </div>
+            <div class="card-info">
+                <p>Mây: <?php echo " ${tokyo['clouds']}%" ?></p>
+                <p>Độ ẩm: <?php echo " ${tokyo['humidity']}%" ?></p>
+                <p>Tốc độ gió: <?php echo " ${tokyo['wind']}m/s" ?></p>
+            </div>
+        </section>
+        <section class="card anim-flip anim-flip-card-3">
+            <header>
+                <h1 class="card-header">Seoul</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $seoul['temp'] ?></p>
+            <div class="icon">
+                <div class="cloud-group">
+                    <span class="icon-cloud cloud-circle shadow-cloud-clip"></span>
+                    <span class="icon-cloud cloud-base shadow-cloud-clip"></span>
+                    <div class="rain-group">
+                        <span class="icon-cloud rain"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-info">
+                <p>Mây: <?php echo " ${seoul['clouds']}%" ?></p>
+                <p>Độ ẩm: <?php echo " ${seoul['humidity']}%" ?></p>
+                <p>Tốc độ gió: <?php echo " ${seoul['wind']}m/s" ?></p>
+            </div>
+        </section>
+        <section class="card anim-flip anim-flip-card-4">
+            <header>
+                <h1 class="card-header">London</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $london['temp'] ?></p>
+            <div class="icon">
+                <div class="cloud-group">
+                    <div class="sun-group">
+                        <span class="icon-cloud sun"></span>
+                        <span class="icon-cloud sunshine"></span>
+                    </div>
+                    <span class="icon-cloud cloud-circle shadow-cloud-clip"></span>
+                    <span class="icon-cloud cloud-base shadow-cloud-clip"></span>
+                </div>
+            </div>
+            <div class="card-info">
+                <p>Mây: <?php echo " ${london['clouds']}%" ?></p>
+                <p>Độ ẩm: <?php echo " ${london['humidity']}%" ?></p>
+                <p>Tốc độ gió: <?php echo " ${london['wind']}m/s" ?></p>
+            </div>
+        </section>
+        <section class="card anim-flip anim-flip-card-5">
+            <header>
+                <h1 class="card-header">Paris</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $paris['temp'] ?></p>
+            <div class="icon">
+                <div class="cloud-group">
+                    <span class="icon-cloud cloud-circle shadow-cloud-clip"></span>
+                    <span class="icon-cloud cloud-base shadow-cloud-clip"></span>
+                </div>
+            </div>
+            <div class="card-info">
+                <p>Mây: <?php echo " ${paris['clouds']}%" ?></p>
+                <p>Độ ẩm: <?php echo " ${paris['humidity']}%" ?></p>
+                <p>Tốc độ gió: <?php echo " ${paris['wind']}m/s" ?></p>
+            </div>
+        </section>
+        <section class="card anim-flip anim-flip-card-6">
+            <header>
+                <h1 class="card-header">New York</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $newyork['temp'] ?></p>
+            <div class="icon">
+                <div class="cloud-group">
+                    <span class="icon-cloud cloud-circle shadow-cloud-clip"></span>
+                    <span class="icon-cloud cloud-base shadow-cloud-clip"></span>
+                    <div class="rain-group">
+                        <span class="icon-cloud rain"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-info">
+                <p>Mây: <?php echo " ${newyork['clouds']}%" ?></p>
+                <p>Độ ẩm: <?php echo " ${newyork['humidity']}%" ?></p>
+                <p>Tốc độ gió: <?php echo " ${newyork['wind']}m/s" ?></p>
+            </div>
+        </section>
+    </div>
+</main>

@@ -1,0 +1,223 @@
+//
+// Variables
+//----------------------------------------------
+$search-padding-hor: 20px;
+$search-padding-vert: 16px;
+
+//
+//  Search mini form
+//  ---------------------------------------------
+
+.block-search {
+  .block-title,
+  .nested {
+    display: none;
+  }
+}
+
+//
+//  Desktop view Search
+//-----------------------------------------------
+@media (min-width: $screen-mob-min) {
+  .block-search {
+    .search-control_wrapper {
+      display: block !important;
+      .ui-dialog-buttonpane {
+        display: none;
+      }
+    }
+
+    #search_mini_form {
+      @include make-flex;
+      position: relative;
+
+      .search .label {
+        display: none;
+      }
+
+      .field {
+        padding: 0;
+        width: 100%;
+      }
+
+      .control {
+        position: static;
+        top: auto;
+        right: auto;
+        left: auto;
+      }
+
+      input {
+        line-height: 26px;
+        height: 60px;
+        border: 1px solid $border-color;
+        background-color: $white;
+        padding: $search-padding-vert $search-padding-hor $search-padding-vert 2*$search-padding-hor;
+      }
+
+      button[type="submit"] {
+        @include button-block__primary;
+        font-weight: 700;
+        padding: 9px 30px;
+        margin-left: 5px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+    }
+  }
+}
+
+.ie11 {
+  .block-search #search_mini_form button[type="submit"] {
+    &:hover {
+      box-shadow: none;
+      background: $accent;
+      color: $white;
+    }
+  }
+}
+
+.block-search #search_mini_form input {
+  @media (min-width: $screen-lg-min) {
+    min-width: 370px;
+  }
+  @media (min-width: $screen-xl-min) {
+    min-width: 570px;
+  }
+}
+
+//
+//  Mobile view Search
+//-----------------------------------------------
+
+@media (max-width: $screen-mob-min - 1) {
+  .block-search {
+    #search_mini_form {
+      &,
+      > .search {
+        position: fixed;
+        z-index: 51;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+      }
+
+      .search .control {
+        display: none;
+      }
+
+      .ui-dialog-buttonpane {
+        display: none;
+      }
+    }
+
+    .search .label {
+      display: block;
+      position: fixed;
+      z-index: 11;
+      top: 0;
+      right: 2.5*$rd-navbar-panel-height;
+      font-family: $default-icon-family;
+      width: $rd-navbar-panel-height;
+      height: $rd-navbar-panel-height;
+      background: transparent;
+      @include toggle-icons-via-rotation($rd-navbar-panel-height, 20px, $sm-header-contrast-color, '\ea66', '\ea5c', $trigger-class: 'open');
+
+      span {
+        text-indent: 200vw;
+        &:before,
+        &:after {
+          text-indent: 0;
+        }
+      }
+
+      &.open {
+        right: 0;
+        z-index: 99;
+        span {
+          color: $text-light;
+        }
+        &:hover span {
+          color: $primary;
+        }
+      }
+    }
+
+    .field.search > .search-control_wrapper {
+      position: fixed;
+      z-index: 10;
+      left: auto;
+      top: 0;
+      right: 2*$rd-navbar-panel-height;
+      width: 0;
+      height: $rd-navbar-panel-height;
+      transition: $default-transition;
+
+      > .control {
+        height: 100%;
+      }
+
+      input {
+        border-radius: 0;
+        height: 100%;
+        width: 100%;
+        display: block;
+        background: $white;
+        border: none;
+        font-size: 12px;
+        line-height: 14px;
+        padding: 16px 0 16px 0;
+      }
+    }
+
+    #search_mini_form .search.open .search-control_wrapper {
+      right: 0;
+      left: 0;
+      width: auto;
+      z-index: 97;
+
+      input {
+        padding: 16px 112px 16px 16px;
+      }
+    }
+
+    form {
+      button[type="submit"] {
+        @include font-icon('\ea66');
+        background: transparent;
+        color: $sm-header-main-color;
+        line-height: $rd-navbar-panel-height;
+        margin: 0;
+        padding: 0;
+        position: fixed;
+        z-index: 59;
+        right: $rd-navbar-panel-height;
+        top: -$rd-navbar-panel-height;
+        width: $rd-navbar-panel-height;
+        height: $rd-navbar-panel-height;
+        opacity: 0;
+        &:before {
+          font-size: 20px;
+        }
+
+        span {
+          display: none;
+        }
+      }
+    }
+
+    .field.search.open + .actions button[type="submit"] {
+      top: 0;
+      opacity: 1;
+      z-index: 99;
+      box-shadow: none;
+      &:hover {
+        color: $text-dark;
+      }
+    }
+  }
+}

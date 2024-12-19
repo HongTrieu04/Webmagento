@@ -1,0 +1,1 @@
+/var/www/myshop/lib/web/mage/mage.js

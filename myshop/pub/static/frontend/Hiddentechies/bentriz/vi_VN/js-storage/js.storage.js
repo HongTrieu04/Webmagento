@@ -1,0 +1,1 @@
+/var/www/myshop/lib/web/js-storage/js.storage.js

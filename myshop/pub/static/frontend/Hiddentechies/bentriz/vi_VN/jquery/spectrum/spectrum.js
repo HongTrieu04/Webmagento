@@ -1,0 +1,1 @@
+/var/www/myshop/lib/web/jquery/spectrum/spectrum.js

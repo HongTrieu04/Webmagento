@@ -1,0 +1,177 @@
+<?php
+/**
+ * @var \Modules\Weather\Block\WeatherBlock $block
+ */
+?>
+<?php
+$hanoi = $block->getWeatherInfoIn('Hanoi');
+$tokyo = $block->getWeatherInfoIn('Tokyo');
+$newyork = $block->getWeatherInfoIn('ny');
+$london = $block->getWeatherInfoIn('London');
+$paris = $block->getWeatherInfoIn('Paris');
+$seoul = $block->getWeatherInfoIn('Seoul');
+?>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget Thời Tiết</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px; /* Khoảng cách giữa các thẻ */
+        }
+
+        .card-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .card {
+            width: calc(50% - 10px); /* Mỗi thẻ chiếm 50% chiều rộng của mỗi hàng */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-header {
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .card-temp {
+            font-size: 2em;
+            text-align: center;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .weather-icon {
+            display: block;
+            margin: 0 auto;
+            width: 50px; /* Tùy chỉnh kích thước icon */
+            height: 50px;
+        }
+
+        .card-info {
+            font-size: 0.9em;
+        }
+
+        .card-info p {
+            margin: 5px 0;
+        }
+
+
+        .card-info p:first-child {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<main class="container">
+    <div class="card-wrapper col-md-6 mb-4">
+        <!-- Hàng 1 -->
+        <section class="card">
+            <header>
+                <h1 class="card-header">Hà Nội</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $hanoi['temp']; ?>°C</p>
+            <img src="<?php echo $hanoi['cond']; ?>" alt="Weather Icon" class="weather-icon">
+            <div class="card-info">
+                <p>Mây: <?php echo $hanoi['clouds']; ?>%</p>
+                <p>Độ ẩm: <?php echo $hanoi['humidity']; ?>%</p>
+                <p>Tốc độ gió: <?php echo $hanoi['wind']; ?>m/s</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <header>
+                <h1 class="card-header">Tokyo</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $tokyo['temp']; ?>°C</p>
+            <img src="<?php echo $tokyo['cond']; ?>" alt="Weather Icon" class="weather-icon">
+            <div class="card-info">
+                <p>Mây: <?php echo $tokyo['clouds']; ?>%</p>
+                <p>Độ ẩm: <?php echo $tokyo['humidity']; ?>%</p>
+                <p>Tốc độ gió: <?php echo $tokyo['wind']; ?>m/s</p>
+            </div>
+        </section>
+
+        <!-- Hàng 2 -->
+        <section class="card">
+            <header>
+                <h1 class="card-header">Seoul</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $seoul['temp']; ?>°C</p>
+            <img src="<?php echo $seoul['cond']; ?>" alt="Weather Icon" class="weather-icon">
+            <div class="card-info">
+                <p>Mây: <?php echo $seoul['clouds']; ?>%</p>
+                <p>Độ ẩm: <?php echo $seoul['humidity']; ?>%</p>
+                <p>Tốc độ gió: <?php echo $seoul['wind']; ?>m/s</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <header>
+                <h1 class="card-header">London</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $london['temp']; ?>°C</p>
+            <img src="<?php echo $london['cond']; ?>" alt="Weather Icon" class="weather-icon">
+            <div class="card-info">
+                <p>Mây: <?php echo $london['clouds']; ?>%</p>
+                <p>Độ ẩm: <?php echo $london['humidity']; ?>%</p>
+                <p>Tốc độ gió: <?php echo $london['wind']; ?>m/s</p>
+            </div>
+        </section>
+
+        <!-- Hàng 3 -->
+        <section class="card">
+            <header>
+                <h1 class="card-header">Paris</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $paris['temp']; ?>°C</p>
+            <img src="<?php echo $paris['cond']; ?>" alt="Weather Icon" class="weather-icon">
+            <div class="card-info">
+                <p>Mây: <?php echo $paris['clouds']; ?>%</p>
+                <p>Độ ẩm: <?php echo $paris['humidity']; ?>%</p>
+                <p>Tốc độ gió: <?php echo $paris['wind']; ?>m/s</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <header>
+                <h1 class="card-header">New York</h1>
+            </header>
+            <p class="card-temp box-highlight"><?php echo $newyork['temp']; ?>°C</p>
+            <img src="<?php echo $newyork['cond']; ?>" alt="Weather Icon" class="weather-icon">
+            <div class="card-info">
+                <p>Mây: <?php echo $newyork['clouds']; ?>%</p>
+                <p>Độ ẩm: <?php echo $newyork['humidity']; ?>%</p>
+                <p>Tốc độ gió: <?php echo $newyork['wind']; ?>m/s</p>
+            </div>
+        </section>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,129 @@
+[2024-12-10T14:55:23.542312+00:00] main.DEBUG: array (
+  'request' => 
+  array (
+    'accessKey' => '****',
+    'amount' => '2965000',
+    'extraData' => 'merchantName=Momo Partner',
+    'ipnUrl' => 'http://otoextra.me/momo/payment/ipn/',
+    'orderId' => '000000043',
+    'orderInfo' => 'Default Store View',
+    'partnerCode' => '****',
+    'redirectUrl' => 'http://otoextra.me/momo/payment/return/',
+    'requestId' => '1733842521000',
+    'requestType' => 'captureWallet',
+    'signature' => '8a0aa7559917c4f4208051329b27696ea14472e824bab51b3b9e5baff4ec9085',
+  ),
+  'request_uri' => 'https://test-payment.momo.vn/v2/gateway/api/create',
+  'response' => 
+  array (
+    'partnerCode' => '****',
+    'orderId' => '000000043',
+    'requestId' => '1733842521000',
+    'amount' => 2965000,
+    'responseTime' => 1733842523489,
+    'message' => 'Successful.',
+    'resultCode' => 0,
+    'payUrl' => 'https://test-payment.momo.vn/v2/gateway/pay?s=b31767a112b97368d71ae3740319f1c58b7135444e1479c9ebd13d667efafebb&t=TU9NT3wwMDAwMDAwNDM',
+    'deeplink' => 'momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3wwMDAwMDAwNDM&v=3.0',
+    'qrCodeUrl' => 'momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3wwMDAwMDAwNDM&v=3.0',
+  ),
+) [] []
+[2024-12-10T14:55:57.309963+00:00] main.DEBUG: array (
+  'request' => 
+  array (
+    'accessKey' => '****',
+    'amount' => '410000',
+    'extraData' => 'merchantName=Momo Partner',
+    'ipnUrl' => 'http://otoextra.me/momo/payment/ipn/',
+    'orderId' => '000000044',
+    'orderInfo' => 'Default Store View',
+    'partnerCode' => '****',
+    'redirectUrl' => 'http://otoextra.me/momo/payment/return/',
+    'requestId' => '1733842556000',
+    'requestType' => 'payWithATM',
+    'signature' => 'ffeb2a3830562217707313566338648648ac87921a2e9fd8a695683a34eca68d',
+  ),
+  'request_uri' => 'https://test-payment.momo.vn/v2/gateway/api/create',
+  'response' => 
+  array (
+    'partnerCode' => '****',
+    'orderId' => '000000044',
+    'requestId' => '1733842556000',
+    'amount' => 410000,
+    'responseTime' => 1733842557351,
+    'message' => 'Successful.',
+    'resultCode' => 0,
+    'payUrl' => 'https://test-payment.momo.vn/v2/gateway/pay?s=23671cca1d52d5f1f108d169bf4c864808d9612d2e973ed61dbd429718e77564&t=TU9NT3wwMDAwMDAwNDQ',
+  ),
+) [] []
+[2024-12-10T15:24:56.214350+00:00] main.DEBUG: array (
+  'request' => 
+  array (
+    'accessKey' => '****',
+    'amount' => '210000',
+    'extraData' => 'merchantName=Momo Partner',
+    'ipnUrl' => 'http://otoextra.me/momo/payment/ipn/',
+    'orderId' => '000000048',
+    'orderInfo' => 'Default Store View',
+    'partnerCode' => '****',
+    'redirectUrl' => 'http://otoextra.me/momo/payment/return/',
+    'requestId' => '1733844292000',
+    'requestType' => 'captureWallet',
+    'signature' => '9f3da609ad44bbe3cb4110e2dd23af091465c2b224b92e5c4c6c8d7b619a8186',
+  ),
+  'request_uri' => 'https://test-payment.momo.vn/v2/gateway/api/create',
+  'response' => 
+  array (
+    'partnerCode' => '****',
+    'orderId' => '000000048',
+    'responseTime' => 1733844296077,
+    'message' => 'This QR Code has not been generated successfully. Please try again later.',
+    'resultCode' => 98,
+  ),
+) [] []
+[2024-12-19T05:05:44.956847+00:00] main.DEBUG: array (
+  'request' => 
+  array (
+    'appid' => '2553',
+    'apptime' => 1734584744000,
+    'apptransid' => '241219_000000060',
+    'appuser' => 'ZaloPayDemo',
+    'item' => '[{"itemid":"BPO09","itemname":"T\\u1ea5m Ch\\u1eafn N\\u1eafng \\u00d4 T\\u00f4 D\\u1ea1ng X\\u1ed1p Tr\\u00f2n","itemprice":55000,"itemquantity":"1.0000"}]',
+    'embeddata' => '{"merchantinfo":"boolfly"}',
+    'amount' => 90000,
+    'description' => 'ZaloPay Integration for Magento 2',
+    'bankcode' => 'zalopayapp',
+    'mac' => 'f0a01ebc5693b8bb220a9309ce4434438dbec7a7f3ed546f479a05bd5bb0a685',
+  ),
+  'request_uri' => 'https://sandbox.zalopay.com.vn/v001/tpe/createorder',
+  'response' => 
+  array (
+    'returncode' => 1,
+    'returnmessage' => '',
+    'zptranstoken' => 'AChkIehkR-8spTRELGQB4bOQ',
+    'orderurl' => 'https://qcgateway.zalopay.vn/openinapp?order=eyJ6cHRyYW5zdG9rZW4iOiJBQ2hrSWVoa1ItOHNwVFJFTEdRQjRiT1EiLCJhcHBpZCI6MjU1M30=',
+  ),
+) [] []
+[2024-12-19T07:05:09.195138+00:00] main.DEBUG: array (
+  'request' => 
+  array (
+    'appid' => '2553',
+    'apptime' => 1734591908000,
+    'apptransid' => '241219_000000061',
+    'appuser' => 'ZaloPayDemo',
+    'item' => '[{"itemid":"TLS06","itemname":"Th\\u1ea3m L\\u00f3t S\\u00e0n \\u00d4 T\\u00f4 Kardo Mazda CX8 2018","itemprice":2890000,"itemquantity":"1.0000"}]',
+    'embeddata' => '{"merchantinfo":"boolfly"}',
+    'amount' => 2890000,
+    'description' => 'ZaloPay Integration for Magento 2',
+    'bankcode' => 'zalopayapp',
+    'mac' => 'bcf3993f791362d4fb58f683b0a6d06d8b224d0fa469f3b07d30aae9e7883fd7',
+  ),
+  'request_uri' => 'https://sandbox.zalopay.com.vn/v001/tpe/createorder',
+  'response' => 
+  array (
+    'returncode' => 1,
+    'returnmessage' => '',
+    'zptranstoken' => 'ACNwAoCNNM_jj0ZVXVIDoS8A',
+    'orderurl' => 'https://qcgateway.zalopay.vn/openinapp?order=eyJ6cHRyYW5zdG9rZW4iOiJBQ053QW9DTk5NX2pqMFpWWFZJRG9TOEEiLCJhcHBpZCI6MjU1M30=',
+  ),
+) [] []

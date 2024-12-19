@@ -1,0 +1,1 @@
+/var/www/myshop/lib/web/jquery/ui-modules/widgets/tabs.js

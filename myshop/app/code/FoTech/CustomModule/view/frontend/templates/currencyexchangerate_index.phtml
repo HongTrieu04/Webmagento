@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @var FoTech\CustomModule\Block\CurrencyExchangeRateIndex $block
+ */
+$currencies = $block->getCurrencyExchangeRate()['Exrate'];
+//var_dump();
+?>
+<h2>Tỉ giá tiền tệ</h2>
+<table>
+    <tr>
+        <th>Tên ngoại tệ</th>
+        <th class="currency-code">Mã ngoại tệ</th>
+        <th>Giá mua bằng tiền mặt</th>
+        <th>Giá mua qua chuyển khoản</th>
+        <th>Giá bán</th>
+    </tr>
+    <?php foreach($currencies as $currency): ?>
+        <?php $currency = $currency['@attributes']?>
+        <tr>
+            <td><?php echo $currency['CurrencyName']?></td>
+            <td class="currency-code"><?php echo $currency['CurrencyCode']?>&nbsp&nbsp&nbsp<div class="currency-flag currency-flag-<?php echo strtolower($currency['CurrencyCode']); ?>"></div></td>
+            <td><?php echo $currency['Buy']?></td>
+            <td><?php echo $currency['Transfer']?></td>
+            <td><?php echo $currency['Sell']?></td>
+        </tr>
+    <?php endforeach ?>
+</table>
+

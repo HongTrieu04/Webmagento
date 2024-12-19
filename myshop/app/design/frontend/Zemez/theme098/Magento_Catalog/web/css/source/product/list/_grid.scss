@@ -1,0 +1,99 @@
+//
+//  Grid
+//  ---------------------------------------------
+.grid-main .featured.grid {
+  .products-grid {
+    .product-item {
+      @media (max-width: $screen-md-min) {
+        @include flex-basis(50% !important);
+      }
+      @media (max-width: $screen-sm-min - 1) {
+        @include flex-basis(100% !important);
+      }
+    }
+  }
+}
+
+.products-grid {
+  .product-items {
+    @include make-flex();
+    @include make-row();
+    @include flex-wrap(wrap);
+    justify-content: center;
+  }
+  .product-item {
+    @include make-col();
+    @include flex-basis(100%);
+    margin-bottom: $gutter-width;
+    @media (min-width: $screen-sm-min) {
+      @include flex-basis(50%);
+    }
+    @media (min-width: $screen-md-min) {
+      @include flex-basis(33.33%);
+    }
+    @media (max-width: $screen-md-min) {
+      margin-bottom: 30px;
+    }
+    @media (max-width: $screen-sm-min) {
+      margin-bottom: 20px;
+    }
+  }
+
+  //Image
+  .product-image-container {
+    display: inline-block;
+    max-width: 100%;
+    //background: $bg-light;
+  }
+  .product-image-wrapper {
+    height: 0;
+    display: block;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .product-image-photo {
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: auto;
+    max-width: 100%;
+    margin-bottom: 15px;
+    @media (max-width: $screen-sm-min - 1) {
+      text-align: center;
+    }
+  }
+
+  //Reviews
+  .reviews-actions {
+    @include make-flex();
+    @include justify-content(space-between);
+    .action.add {
+      @include font-icon('\ea7a');
+      font-size: 0;
+      &:before {
+        font-size: $default-font-size;
+      }
+    }
+  }
+
+  //Price
+  .price-from {
+    margin-bottom: 0;
+  }
+
+  .price-to {
+    margin-bottom: 0;
+  }
+
+  // Actions
+  .product-item .product-item-actions {
+    @include justify-content(space-between);
+    @include align-items(center);
+  }
+}
