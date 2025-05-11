@@ -31,7 +31,7 @@ Dự án này giúp bạn thiết lập môi trường phát triển Magento s�
 ### 1. Clone repo này
 
 ```bash
-git clone https://github.com/yourusername/magento-docker.git
+https://github.com/HongTrieu04/Webmagento.git
 cd magento-docker
 ```
 
@@ -40,7 +40,8 @@ cd magento-docker
 Đặt mã nguồn Magento vào thư mục `myshop/`:
 
 ```bash
-cp -r đường/dẫn/đến/magento myshop
+cp -r ./magento myshop
+<path của myshop>
 ```
 
 ### 3. Thêm database (nếu có)
@@ -49,7 +50,8 @@ Tạo thư mục `dump/` chứa file SQL nếu đã có sẵn DB:
 
 ```bash
 mkdir dump
-cp đường/dẫn/myshop.sql dump/myshop.sql
+cp ./myshop.sql dump/myshop.sql
+<path của file sql>
 ```
 
 ## 🚀 Khởi động môi trường
@@ -137,14 +139,6 @@ docker compose restart app
 ```bash
 docker compose build app
 ```
-
----
-
-## 👤 Tác giả
-
-Maintained by [Your Name](https://github.com/yourusername)
-
----
 
 ## 📄 License
 
