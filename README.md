@@ -22,8 +22,7 @@ Dự án này giúp bạn thiết lập môi trường phát triển Magento s�
 │       └── default.conf
 ├── myshop/
 │   └── (Magento source code)
-└── dump/
-    └── myshop.sql
+└── myshop.sql
 ```
 
 ## ⚙️ Cài đặt và khởi động
@@ -35,76 +34,83 @@ https://github.com/HongTrieu04/Webmagento.git
 cd magento-docker
 ```
 
-### 2. Copy mã nguồn Magento
-
-Đặt mã nguồn Magento vào thư mục `myshop/`:
+### 2. Build docker
 
 ```bash
-cp -r ./magento myshop
-<path của myshop>
+docker compose up --build
 ```
 
-### 3. Thêm database (nếu có)
-
-Tạo thư mục `dump/` chứa file SQL nếu đã có sẵn DB:
+### 3. Vào container để cài đặt và setup magento
 
 ```bash
-mkdir dump
-cp ./myshop.sql dump/myshop.sql
-<path của file sql>
+docker exec -it webmagento-phpfpm-1 bash
+
+composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.4.7 magento
+
+cd magento
+
+bin/magento setup:install \
+--backend-frontname super_admin \
+--base-url=http://localhost \
+--db-host=localhost \
+--db-name=magentodb \
+--db-user=annk \
+--db-password=Andaica123. \
+--admin-firstname=My \
+--admin-lastname=Admin \
+--admin-email=admin@otoextra.me \
+--admin-user=annk \
+--admin-password=ankhac0909 \
+--language=en_US \
+--currency=USD \
+--timezone=America/Chicago \
+--use-rewrites=1
+--search-engine=elasticsearch7 \
+--elasticsearch-host=elasticsearch \
+--elasticsearch-port=9200
+
 ```
+- Ở bước này ta cần chú ý setup đúng đường dẫn url (localhost hoặc url khác) và các thông tin mà mình muốn thay đổi (admin, db,...)
+- Ngoai ra cần truy cập vào đây https://marketplace.magento.com/customer/accessKeys/ để lấy authentication key
+- Chú ý chạy các lệnh cấp quyền nếu có lỗi khi setup: chown, chmod, find, ...
+## 🚀 Cập nhật dự án vào Magento đã cài
 
-## 🚀 Khởi động môi trường
-
-### 1. Chạy Docker Compose
+### 1. Copy code vào container phpfpm và import db
 
 ```bash
-docker compose up -d
+# Copy code
+docker cp /<path>/myshop/. webmagento-phpfpm-1:/var/www/html/magento/
+
+# Copy file dump sql
+docker cp /<path>/myshop.sql webmagento-db-1:/tmp/myshop.sql
+
+# Vào container của DB để cập nhật dữ liệu từ file sql
+docker exec -it webmagento-db-1 bash
+
+mysql -u root -p magento < /tmp/myshop.sql
+
 ```
 
-### 2. Nếu chưa mount Magento vào volume
-
-Copy source vào volume:
+### 2. Refresh lại container phpfpm
 
 ```bash
-docker cp ./myshop/. $(docker compose ps -q app):/var/www/html/
-docker compose exec app chown -R app:app /var/www/html
+docker exec -it webmagento-phpfpm-1 bash
+
+cd /var/www/html/magento && \
+php bin/magento setup:config:set --db-host=db --db-name=magento --db-user=magento --db-password=magento && \
+php bin/magento config:set web/unsecure/base_url http://localhost/ && \
+php bin/magento config:set web/secure/base_url https://localhost/ && \
+php bin/magento cache:flush && \
+php bin/magento indexer:reindex && \
+php bin/magento deploy:mode:set developer
+
 ```
-
-### 3. Import database
-
-```bash
-docker cp ./dump/myshop.sql $(docker compose ps -q db):/myshop.sql
-docker compose exec db bash -c "mysql -u root -pmagento magento < /myshop.sql"
-```
-
 ## 🌐 Truy cập
 
-- Magento: https://localhost:8443
-- phpMyAdmin: http://localhost:8080  
-  Tài khoản: `magento` / Mật khẩu: `magento`
-
-> 📌 Có thể xuất hiện cảnh báo SSL lần đầu, chấp nhận để tiếp tục.
-
-## 🛠 Chạy production (trên VM hoặc public IP)
-
-Chỉnh sửa file `nginx/conf/default.conf`, dòng `server_name`:
-
-```nginx
-server_name your-public-ip-or-domain;
-```
-
-Nếu chạy local, có thể để là:
-
-```nginx
-server_name localhost;
-```
-
-hoặc
-
-```nginx
-server_name _;
-```
+- Magento: https://localhost
+- Admin: http://localhost/super_admin
+      TK: annk
+      MK: ankhac0909
 
 ## 🧹 Dọn dẹp
 
